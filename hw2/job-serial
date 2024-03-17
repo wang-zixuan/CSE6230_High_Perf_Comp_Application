@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -J hw2-serial
+#SBATCH -t 5:00:00
+
+#run the application:
+srun -n 1 ./serial -n 10000
+srun -n 1 ./serial -n 20000
+srun -n 1 ./serial -n 40000
+srun -n 1 ./serial -n 80000
+srun -n 1 ./serial -n 160000
+srun -n 1 ./serial -n 320000

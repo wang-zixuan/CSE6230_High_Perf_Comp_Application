@@ -1,0 +1,8 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -J hw4-mpi
+#SBATCH --ntasks-per-node=64
+#SBATCH -t 00:30:00
+
+#run the application:
+srun ./mpi

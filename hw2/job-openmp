@@ -1,0 +1,56 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 64
+#SBATCH -J hw2-openmp
+#SBATCH -t 1:00:00
+
+#OpenMP settings:
+export OMP_NUM_THREADS=64
+export OMP_PLACES=cores
+
+#run the application:
+srun -n 1 ./openmp -n 100000
+srun -n 1 ./openmp -n 200000
+srun -n 1 ./openmp -n 400000
+srun -n 1 ./openmp -n 800000
+srun -n 1 ./openmp -n 1600000
+srun -n 1 ./openmp -n 3200000
+
+# strong scaling
+export OMP_NUM_THREADS=2
+srun -n 1 ./openmp -n 500000
+
+export OMP_NUM_THREADS=4
+srun -n 1 ./openmp -n 500000
+
+export OMP_NUM_THREADS=8
+srun -n 1 ./openmp -n 500000
+
+export OMP_NUM_THREADS=16
+srun -n 1 ./openmp -n 500000
+
+export OMP_NUM_THREADS=32
+srun -n 1 ./openmp -n 500000
+
+export OMP_NUM_THREADS=64
+srun -n 1 ./openmp -n 500000
+
+# weak scaling
+export OMP_NUM_THREADS=2
+srun -n 1 ./openmp -n 20000
+
+export OMP_NUM_THREADS=4
+srun -n 1 ./openmp -n 40000
+
+export OMP_NUM_THREADS=8
+srun -n 1 ./openmp -n 80000
+
+export OMP_NUM_THREADS=16
+srun -n 1 ./openmp -n 160000
+
+export OMP_NUM_THREADS=32
+srun -n 1 ./openmp -n 320000
+
+export OMP_NUM_THREADS=64
+srun -n 1 ./openmp -n 640000
